@@ -57,4 +57,11 @@ Errors: 422 validation / invalid coupon, 404 not found, 409 conflict (no driver,
 
 ## How I used AI
 
-_Fill this in honestly before submitting: what you prompted for, what you rejected or rewrote, and why._
+I used Claude to build most of this project. I gave it the problem statement and asked for a Ruby on Rails version with a folder structure. It generated the layered design (controllers, services, repositories, models), the pricing engine, the driver allocator and the tests.
+
+What the AI decided, and I reviewed: the spec left several things open, and the AI proposed the answers, which I then read through and kept. These were marginal tier pricing, minimum fare applied before the coupon, free upgrades priced at the hatchback rate, and rejecting invalid coupons at booking time. They are listed under Assumptions.
+
+What went wrong and got fixed: the first test run had 2 failures caused by mistakes in the test setup. The demo script also failed once on file load order. Both were fixed, and the assertions were not loosened.
+
+Verification: I ran the 49 tests, ran the demo script for the edge cases, and started the server and called the endpoints myself.
+What I'd do differently: write the pricing tests first, confirm the ambiguous rules with the recruiter before building, and add surge pricing and cancellation.
